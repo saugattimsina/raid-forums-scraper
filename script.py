@@ -126,8 +126,11 @@ def thread_title_and_url_finder_navigator(forum_name):
             content_data = threads_title_and_url_finder(forum_content)
             all_page_collector["page"+str(page)] = content_data
             # print(all_page_collector)
+            #------------------------------------------------
+            #checking all the threads only upto page 3 in forum
             if page == 3:
                 break
+            #--------------------------------------------------
  
 
     return all_page_collector
@@ -221,8 +224,11 @@ if __name__ == "__main__":
 
     # only one forum is taken for making work easy
 
+    #---------------------------------------------------------------
+    #only gettig inside the first thread in the link 
     page_link = list(titles_and_urls.get("page1")[0].values())[0]
     page_title = list(titles_and_urls.get("page1")[0].keys())[0]
+    #-----------------------------------------------------------------
 
     print(page_link)
 
