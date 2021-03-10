@@ -11,9 +11,9 @@ def database_creator():
             page_url VARCHAR(255) UNIQUE,
             page_title VARCHAR(255),
             text_content TEXT,
-            date_time  VARCHAR(50),
+            date_time  VARCHAR(255),
             username  TEXT,
-            user_title VARCHAR(50),
+            user_title VARCHAR(255),
             PRIMARY KEY(post_id)
         )
         '''
@@ -21,9 +21,9 @@ def database_creator():
         CREATE TABLE IF NOT EXISTS comments(
             comment_id INT GENERATED ALWAYS AS IDENTITY,
             text_content TEXT,
-            date_time  VARCHAR(50),
+            date_time  VARCHAR(255),
             username  TEXT,
-            user_title VARCHAR(50),
+            user_title VARCHAR(255),
             post_id  INT,
             PRIMARY KEY(comment_id),
             CONSTRAINT fk_posts FOREIGN KEY(post_id) REFERENCES posts(post_id)
@@ -50,4 +50,4 @@ def connection_creator():
         print(e)
     
     
-database_creator()
+# database_creator()

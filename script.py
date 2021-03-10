@@ -194,7 +194,7 @@ def thread_data_finder_navigator(thread_path,page_title):
     all_page_collector["page1"] = page_data
 
     number_of_pages = pages_finder_thread(forum_content)
-    print("number of pages in thread are",number_of_pages)
+    # print("number of pages in thread are",number_of_pages)
     if not number_of_pages == "N/A":
         for page in range(2,number_of_pages+1):
             page_content = browser_with_page_number(url,page)
@@ -202,9 +202,11 @@ def thread_data_finder_navigator(thread_path,page_title):
             content_data = thread_data_finder(forum_content)
             all_page_collector["page"+str(page)] = content_data
             # print(all_page_collector)
+            #------------------------------------------------
+            #scraping comments only till the page 3 
             if page == 3:
                 break
-    
+            #-------------------------------------------------
     return all_page_collector
 
 
@@ -212,7 +214,12 @@ def thread_data_finder_navigator(thread_path,page_title):
 if __name__ == "__main__":
 
     all_forums = forums_path_finder("https://raidforums.com/")
-    titles_and_urls = thread_title_and_url_finder_navigator(all_forums[3])
+
+    #--------------------------------------------------------------------
+    # kept static to avoid captcha at the moment
+    titles_and_urls = thread_title_and_url_finder_navigator(all_forums[4])
+
+    # only one forum is taken for making work easy
 
     page_link = list(titles_and_urls.get("page1")[0].values())[0]
     page_title = list(titles_and_urls.get("page1")[0].keys())[0]

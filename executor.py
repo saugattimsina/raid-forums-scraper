@@ -52,9 +52,8 @@ for key in range(2,len(keys)):
             cur.execute("INSERT INTO comments (text_content,date_time,username,user_title,post_id) VALUES(%s,%s,%s,%s,%s)",(text_content,date_time,username,user_title,post_id))
             conn.commit()
     else:
-        print(key)
-        for i in range(len(posts_and_comments["page"+str(key)])):
-            page = posts_and_comments["page"+str(key)]
+        for i in range(len(posts_and_comments["page"+str(key-2)])):
+            page = posts_and_comments["page"+str(key-2)]
             data = page[i]
             date_time = data["date_time"]
             text_content = data["text_content"]
